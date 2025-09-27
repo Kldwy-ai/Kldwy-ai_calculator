@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP发布展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 定义HarmonyOS Sans SC字体 -->
+    <style>
+        @font-face {
+            font-family: 'HarmonyOS Sans SC';
+            src: url('HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap; /* 确保文本在字体加载期间可见 */
+        }
+    </style>
+    
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        dark: 'rgba(17, 24, 39, 0.8)', // 80%不透明度的深色
+                    },
+                    fontFamily: {
+                        sans: ['HarmonyOS Sans SC', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-shadow {
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            }
+            .hover-lift {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
+            }
+            .screenshot-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('icon/bgpic.png');">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- 页面标题 -->
+        <header class="text-center mb-10">
+            <h1 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-white drop-shadow-lg"></h1>
+        </header>
+        
+        <main class="space-y-8">
+            <!-- 第一个卡片：应用信息和下载 -->
+            <div class="bg-dark rounded-2xl p-6 md:p-8 card-shadow hover-lift">
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                    <!-- 应用图标 -->
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-4 border-white shadow-lg">
+                        <img src="icon/a1.png" alt="应用图标" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- 应用信息 -->
+                    <div class="flex-1 text-white">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-3">计算器</h2>
+                        <p class="text-lg md:text-xl mb-6 italic">⌈一款精美的计算器⌋</p>
+                        
+                        <!-- 按钮容器 -->
+                        <div class="flex flex-wrap gap-4">
+                            <!-- 下载按钮 -->
+                            <a href="apks/app.apk" download class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                                <i class="fa fa-download text-xl"></i>
+                                <span>立即下载</span>
+                            </a>
+                            
+                            <!-- 作者主页按钮 -->
+                            <a href="https://www.douyin.com/user/MS4wLjABAAAACoMYuZ9MyLh5oaC1JDKBIWBimtzOax5BrMTqdFvnkPePNWz-0-oJqARVliZmfLh2?from_tab_name=main" 
+                               target="_blank" 
+                               class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                                <i class="fa fa-user text-xl"></i>
+                                <span>作者主页</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第二个卡片：软件截图 -->
+            <div class="bg-dark rounded-2xl p-6 md:p-8 card-shadow hover-lift">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="fa fa-images text-primary"></i>
+                    软件截图
+                </h2>
+                
+                <!-- 截图网格 -->
+                <div class="screenshot-grid">
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="jietu/1.png" alt="软件截图1" class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="jietu/2.png" alt="软件截图2" class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="jietu/3.png" alt="软件截图3" class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <img src="jietu/4.png" alt="软件截图4" class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 页脚 -->
+        <footer class="mt-12 text-center text-white/80 text-sm">
+            <p>自行制作，无许可证，可自由修改</p>
+        </footer>
+    </div>
+
+    <!-- 简单的交互效果脚本 -->
+    <script>
+        // 页面加载时的淡入效果
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('opacity-0');
+            setTimeout(() => {
+                document.body.classList.remove('opacity-0');
+                document.body.classList.add('transition-opacity', 'duration-1000', 'opacity-100');
+            }, 100);
+        });
+        
+        // 为截图添加点击放大功能
+        const screenshots = document.querySelectorAll('.screenshot-grid img');
+        screenshots.forEach(screenshot => {
+            screenshot.addEventListener('click', () => {
+                // 创建全屏查看器
+                const viewer = document.createElement('div');
+                viewer.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4';
+                viewer.innerHTML = `<img src="${screenshot.src}" alt="${screenshot.alt}" class="max-w-full max-h-screen object-contain">`;
+                document.body.appendChild(viewer);
+                
+                // 点击关闭
+                viewer.addEventListener('click', () => {
+                    viewer.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
